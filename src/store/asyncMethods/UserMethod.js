@@ -17,11 +17,12 @@ export const userList = () => {
             console.log(res);
             dispatch({
                 type: GET_USER_SUCCESS,
-                payload: res
+                payload: res.data
             })
         } catch (error) {
             dispatch({
-                type: GET_USER_FAILED
+                type: GET_USER_FAILED,
+                payload: error.message
             });
             console.log(error);
         }

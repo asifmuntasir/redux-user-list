@@ -16,11 +16,13 @@ export const UserReducer = (state = initState, action) => {
     } else if (type === GET_USER_SUCCESS) {
         return {
             ...state,
+            loading: false,
             users: payload
         }
     } else if (type === GET_USER_FAILED) {
         return {
             ...state,
+            loading: false,
             users: [],
             errors: payload
         }

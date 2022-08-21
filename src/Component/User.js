@@ -4,22 +4,27 @@ import { userList } from '../store/asyncMethods/UserMethod';
 
 const User = () => {
 
-    const { loading } = useSelector(state => state.UserReducer);
+    const { loading, users, errors } = useSelector(state => state.UserReducer);
     const dispatch = useDispatch();
 
     useEffect(() => {
         dispatch(userList());
-    })
+    }, []);
 
     return (
         <>
-            {/* {
+            {
                 !loading ? (
-                    {
-                        users.map(user=> <h1>{user.name}</h1> )
-                    }
-                ) : 'Loading...'
-            } */}
+                    users.map(user => (
+                        <div>
+                            <h3>{user.name}</h3>
+                            <p>Email: {user.email}</p>
+                            <p>Phone: {user.phone}</p>
+                            <p>Website: {user.website}</p>
+                        </div>
+                    ))
+                ) : ('Loading...') ? !errors : <h3>{errors.message}</h3>
+            }
         </>
     );
 };
