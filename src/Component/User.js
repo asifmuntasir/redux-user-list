@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { userList } from '../store/asyncMethods/UserMethod';
 
 const User = () => {
@@ -9,7 +10,7 @@ const User = () => {
 
     useEffect(() => {
         dispatch(userList());
-    }, []);
+    }, [dispatch]);
 
     return (
         <>
@@ -18,9 +19,8 @@ const User = () => {
                     users.map(user => (
                         <div>
                             <h3>{user.name}</h3>
-                            <p>Email: {user.email}</p>
-                            <p>Phone: {user.phone}</p>
                             <p>Website: {user.website}</p>
+                            <Link to={`/usreDetails/${user.id}`}>See Details</Link>
                         </div>
                     ))
                 ) : ('Loading...') ? !errors : <h3>{errors.message}</h3>
