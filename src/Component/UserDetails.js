@@ -1,33 +1,18 @@
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
-import { userDetails } from '../store/asyncMethods/UserMethod';
+import React from 'react';
+import { useSelector } from 'react-redux';
 
 const UserDetails = () => {
 
-    const id = useParams();
-
-    const { loading } = useSelector(state => state.UserReducer);
-    const { details, errors } = useSelector(state => state.userDetails);
-    const dispatch = useDispatch();
-
-    useEffect(() => {
-        dispatch(userDetails(id))
-    }, [dispatch, id])
+    const { details } = useSelector(state => state.UserDetailsReducer);
+    console.log('details_component: ',details);
+    console.log('details_component_id: ',details.id);
 
     return (
         <div>
             <h3>User Details for...</h3>
-            {
-                !loading ? (
-                    details.map(detail => (
-                        <div>
-                            <h4>{detail.email}</h4>
-                            <p>{detail.phone}</p>
-                        </div>
-                    ))
-                ) : ('Loading...')
-            }
+            <h2>id: {details.id}</h2>
+            <h2>username: {details.username}</h2>
+            <h2>name: {details.name}</h2>
         </div>
     );
 };

@@ -14,7 +14,7 @@ function App() {
       <Broter>
         <Routes>
           <Route path='/' element={<User />} />
-          <Route path='/usreDetails/:id' element={<UserDetails />} />
+          <Route path='/userDetails/:id' element={<UserDetails />} />
         </Routes>
       </Broter>
     </>
