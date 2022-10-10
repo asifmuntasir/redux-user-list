@@ -31,7 +31,7 @@ export const userList = () => {
     }
 }
 
-export const userDetails = (id) => {
+export const userDetails = (id, location) => {
     return async (dispatch) => {
         dispatch({
             type: USER_REQUEST
@@ -42,7 +42,9 @@ export const userDetails = (id) => {
                 type: GET_USER_DETAILS_SUCCESS,
                 payload: res.data
             });
-            console.log(res.data);
+            console.log('id_reducer: ', id);
+            console.log('res.data_reducer: ',res.data);
+            location(`/userDetails/${id}`);
         } catch (error) {
             dispatch({
                 type: USER_DETAILS_REQUEST

@@ -3,13 +3,14 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import thunk from 'redux-thunk';
 
 import {
-    UserReducer
+    UserReducer, UserDetailsReducer
 } from './reducers/UserReducer.js'
 
 // const initState = {}
 
 const rootReducer = combineReducers({
-    UserReducer
+    UserReducer,
+    UserDetailsReducer,
 });
 
 

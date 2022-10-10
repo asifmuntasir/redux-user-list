@@ -32,7 +32,7 @@ export const UserReducer = (state = initState, action) => {
     }
 }
 
-export const userDetails = (state = initState, action) => {
+export const UserDetailsReducer = (state = initState, action) => {
     const { type, payload } = action;
     if (type === GET_USER_DETAILS_SUCCESS) {
         return {
